@@ -19,7 +19,7 @@ public class TwinPrimes
 		int round = 0; //used to store number counter
 		int p = 0; //used to store user input
 		int i = 0; //used for all numbers to determine where they are prime
-		int c = 0; //used to count the number of twins
+		int c = 2; //used to count the number of twins
 		
 		//this do while loop only runs when the user input is NOT -1		
 		do{	
@@ -30,8 +30,10 @@ public class TwinPrimes
 			
 			//for loop to test all integers from 3 to (p-2) with intervals of 2.
 			//The reason the interval is 2 is because even numbers can't be prime.
+			
 			for (i = 3; i+2<=p; i+=2) 
 			{
+		
 				//if one integer is prime, program will test whether that integer+2 is also prime
 				if (isPrime(i) && isPrime(i+2)) //uses "isPrime" method
 				{
@@ -42,11 +44,25 @@ public class TwinPrimes
 					
 					//every 2 twins, the program will print line
 					if (c%2 == 0)
-					{
 						System.out.println();
-					}	
+
 				}	
-			}	
+			}
+			
+			
+			/*
+			for (i = 1; i<(p-1)/6; i++)
+			{
+				if ((( (6*i-1) + (6*i+1) )%12) == 0)
+				System.out.printf("(%d,%d)",(6*i-1), (6*i+1));
+				
+				c++;
+				
+				//every 2 twins, the program will print line
+				if (c%2 == 0)
+					System.out.println();
+			}
+			*/
 			
 			//prints line if total number of twins is odd 
 			if (c%2 == 1)
@@ -70,7 +86,9 @@ public class TwinPrimes
 	//i is the tested integer
 	//p is every number from 2 to i-1
 	{
-		for (int p=2; p<i;p++)
+	if (i%2==0) return false;
+	
+		for (int p=3; p<(i/4)+2;p+=2)
 		{
 			if (i%p == 0) return false;
 		}
